@@ -9,24 +9,32 @@ public class MiniMaxAI extends AIModule {
 		chosenMove = 0;
 		// TODO Loop all possible moves. Return best current move when possible?
 		// TODO set d value
-		int depth = 5;
-			if(player == 1) //MAX Turn
-			{
-				//TODO Make MAX move.
-				chosenMove = Max(game, depth);
-			}
-			if(player == 2) //MIN Turn
-			{
-				//TODO Make MIN move.
-				chosenMove = Min(game, depth);
-			} 
+		startMinimax(game);
 	}
 	
+	
+	startMinimax(GameStateModule game){
+		int depth = 5;
+		chosenMove = minimax(game, depth);
+	}
+	
+	
+	
+	
+	
+	private int minimax(GameStateModule game, int depth) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	private int Max(GameStateModule game, int depth) {
 		int currMax = -1;
 		if(depth == 0) {
 			return evaluateState(game);
 		}
+		//TODO Loop for Mins
+		for()
 		return currMax;
 	}
 	
@@ -35,7 +43,14 @@ public class MiniMaxAI extends AIModule {
 		if(depth == 0) {
 			return evaluateState(game);
 		}
+		//TODO Loop for Maxs
+		for()
 		return currMin;
+	}
+	
+	private int evaluateState(GameStateModule game) {
+		//TODO create eval func.
+		return 0;
 	}
 
 }
