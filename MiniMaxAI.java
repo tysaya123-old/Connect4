@@ -15,39 +15,67 @@ public class MiniMaxAI extends AIModule {
 		startMinimax(game);
 	}
 	
-	
+	//TODO Unmake move instead of new board
 	private void startMinimax(GameStateModule game){
+		int currMax = MIN_INT;
+		GameStateModule tempBoard;
+		int tempMin;
 		int depth = 5;
-		chosenMove = minimax(game, depth);
+		for(int i = 0; i <= WIDTH; i++) {
+			if(game.canMakeMove(i)) {
+				tempBoard = game.copy();
+				tempBoard.makeMove(i);
+				tempMin = min(tempBoard, depth - 1);
+				if(tempMin >= currMax) {
+					chosenMove = i;
+					currMax = tempMin;
+				}
+			}
+		}
 	}
 	
 	
-	
-	
-	
-	private int minimax(GameStateModule game, int depth) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	private int Max(GameStateModule game, int depth) {
-		int currMax = -1;
+	private int max(GameStateModule game, int depth) {
+		int currMax = MIN_INT;
+		GameStateModule tempBoard;
+		int tempMin;
+		
 		if(depth == 0) {
 			return evaluateState(game);
 		}
-		//TODO Loop for Mins
-		//for()
+		
+		for(int i = 0; i <= WIDTH; i++) {
+			if(game.canMakeMove(i)) {
+				tempBoard = game.copy();
+				tempBoard.makeMove(i);
+				tempMin = min(tempBoard, depth - 1);
+				if(tempMin >= currMax) {
+					currMax = tempMin;
+				}
+			}
+		}
 		return currMax;
 	}
 	
-	private int Min(GameStateModule game, int depth) {
-		int currMin = -1;
+	private int min(GameStateModule game, int depth) {
+		int currMin = MAX_INT;
+		GameStateModule tempBoard;
+		int tempMax;
+		
 		if(depth == 0) {
 			return evaluateState(game);
 		}
-		//TODO Loop for Maxs
-		//for()
+		
+		for(int i = 0; i <= WIDTH; i++) {
+			if(game.canMakeMove(i)) {
+				tempBoard = game.copy();
+				tempBoard.makeMove(i);
+				tempMax = max(tempBoard, depth - 1);
+				if(tempMax >= currMin) {
+					currMin = tempMax;
+				}
+			}
+		}
 		return currMin;
 	}
 	
