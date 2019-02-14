@@ -40,6 +40,7 @@ public class Main
 		final AIModule[] players = new AIModule[2];
 
 		// Default max ai time is 500 ms
+		// 50000000
 		int AI_time = 500;
 		// Default width to 7
 		int width = 7;
